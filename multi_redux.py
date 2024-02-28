@@ -49,6 +49,19 @@ def operacion_xor(hex1, hex2):
 def extraer_residuo(num_hex):
     return str(num_hex)[0]
 
+def reducir_modulo(resultado_hex):
+    # Convertir el resultado a entero
+    resultado_entero = int(resultado_hex, 16)
+    # Definir el polinomio irreducible P(x) = x^8 + x^4 + x^3 + x + 1
+    polinomio_irreducible = 0x11B
+    # Realizar la reducción módulo el polinomio irreducible
+    while resultado_entero >= 256:
+        reduccion = polinomio_irreducible << (resultado_entero.bit_length() - 9)
+        resultado_entero ^= reduccion
+    # Convertir el resultado reducido de nuevo a hexadecimal
+    resultado_hex_reducido = hex(resultado_entero)
+    return resultado_hex_reducido
+
 
 # Ejemplo de uso:
 num1 = input("Ingrese el primer numero hexadecimal: ")
@@ -59,7 +72,7 @@ print(f'El resulatdo de la multiplicacion es :  {resultado_multi}')
 
 print(f'El resultado de la multiplicacion (polinomio) :  {hex_polinomio(resultado_multi)}')
 
-print(extraer_residuo(resultado_multi))
+print(reducir_modulo(resultado_multi))
 
 # dividendo = binario_polinomio("110110110110")
 # divisor = [8, 4, 3, 1, 0]  # Representa x^8 + x^4 + x^3 + x + 1
