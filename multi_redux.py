@@ -8,6 +8,7 @@ Output:
         P(x) = 0x11B = 283
 """
 
+#Multiplica dos numeros hexadecimales y devuelve el valor en hexadecimal
 def multiplicacion(hexa1, hexa2):
     # Convertir los números hexadecimales a enteros
     num1 = int(hexa1, 16)
@@ -19,6 +20,7 @@ def multiplicacion(hexa1, hexa2):
     return resultado_hex
 
 #Psar de hexadecimal a polinomio
+#Devuelve un string que corresponde al hexadecimal
 def hex_polinomio(hex):
     lista = []
     cadena_binaria = bin(int(hex,16)) #Cambiamos de hexadecimal a binario para identifcar los 1 y guardar las posiciones
@@ -26,20 +28,26 @@ def hex_polinomio(hex):
         if cadena_binaria[i] == "1":
             lista.append(i)
 
-    polinomio = ''
+    polinomio = ' '
     for i in lista[::-1]:
         if i == 0:
             polinomio += "1"
         else:
-            polinomio += f"x^{i} + "
+            polinomio += f"x^{i} +"
     return polinomio
 
+#Recibe dos numeros en hexadecimal
+#No se si devolver el resultado en hexadecimal
 def operacion_xor(hex1, hex2):
     # Ejemplo 2
     num1 = int(hex1, 16)
     num2 = int(hex2, 16)
     result = num1 ^ num2 #Operacion XOR entre numeros
     return result
+
+#Recibe un numero hexadecimal y extra el sobrante
+def extraer_residuo(num_hex):
+    return str(num_hex)[0]
 
 
 # Ejemplo de uso:
@@ -49,8 +57,9 @@ num2 = input("Ingrese el segundo numero hexadecimal: ")
 resultado_multi = multiplicacion(num1, num2)
 print(f'El resulatdo de la multiplicacion es :  {resultado_multi}')
 
-print(f'El resulatdo de la multiplicacion (polinomio) :  {hex_polinomio(resultado_multi)}')
+print(f'El resultado de la multiplicacion (polinomio) :  {hex_polinomio(resultado_multi)}')
 
+print(extraer_residuo(resultado_multi))
 
 # dividendo = binario_polinomio("110110110110")
 # divisor = [8, 4, 3, 1, 0]  # Representa x^8 + x^4 + x^3 + x + 1
