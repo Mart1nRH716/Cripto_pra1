@@ -1,0 +1,4 @@
+# Archivos y directorios que deben ser ignorados por Git
+
+# Directorios de entornos virtuales
+env/
