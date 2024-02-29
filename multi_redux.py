@@ -36,10 +36,10 @@ def multiplicacion(hexa1, hexa2):
 def hex_polinomio(hex):
     lista = []
     cadena_binaria = bin(int(hex, 16))[2:] #Cambiamos de hexadecimal a binario para identifcar los 1 y guardar las posiciones
-    cadena_binaria = cadena_binaria[::-1]
+    cadena_binaria = cadena_binaria[::-1] #Invertimos la lista debido a que al principio se encuentras los bits menos significativos
     for i in range(len(cadena_binaria)):
         if cadena_binaria[i] == "1":
-            lista.append(i)
+            lista.append(i) #Guardamos la posicion en una lista del bit encendido
 
     polinomio = ' '
     for i in lista[::-1]:
