@@ -1,3 +1,12 @@
+"""
+GF(2^8)
+Input:
+        A(x) = 0xc3 = 195
+        B(x0) = 0x12 = 18
+Output:
+        C(x) = A(x) * B(x) mod P(x) (en polinomio y en hexadecimal) = 0x19 = x^4 + x^3 + 1
+        P(x) = 0x11B = 283
+"""
 import sys
 from PyQt6.QtWidgets import QApplication, QWidget, QVBoxLayout, QLineEdit, QPushButton, QLabel
 
