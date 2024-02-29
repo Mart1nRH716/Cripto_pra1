@@ -21,10 +21,10 @@ def multiplicacion(hexa1, hexa2):
     while num1 and num2:
         if num2 & 1:
             producto ^= num1
-        num2 >>= 1
-        num1 <<= 1
-        if num1 & 0x100:
-            num1 ^= 0x11B  # Polinomio irreducible x^8 + x^4 + x^3 + x + 1
+        num2 >>= 1 #Se desplaza un bit a la derecha, es decir, se elimina el bit lsb
+        num1 <<= 1 #Se le agrega un cero, es decir se multiplica *2
+        if num1 & 0x100: #0x100 = 256 compara el bit mas siignificativo, y hace and entre ese bit y el 1 de 256. si se 1 significa que se paso
+            num1 ^= 0x11B  #Procedemos hacer la reduccion
 
     # Si el producto es mayor que 255, aplicamos la reducción módulo P(x)
     if producto > 255:
